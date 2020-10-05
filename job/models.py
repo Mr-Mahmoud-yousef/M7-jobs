@@ -6,6 +6,7 @@ JOP_TYPE=(
         ('Part Time','Part Time'),
         
 )
+
 class vacancy_places(models.IntegerChoices):
     One=1
     Two=2
@@ -23,6 +24,12 @@ class job(models.Model):
     vacancy=models.IntegerField(choices=vacancy_places.choices)
     salery=models.IntegerField(default=000)
     Experience=models.IntegerField(default=0)
+    referanse=models.ForeignKey('referanse',on_delete=models.CASCADE)
     def __str__(self):
         return self.title
+class referanse(models.Model):
+    name=models.CharField(max_length=20)
     
+    
+    def __str__(self):
+        return self.name
